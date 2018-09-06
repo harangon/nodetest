@@ -15,7 +15,7 @@ class Directive {
 
 function resultText({midText, sum, diceCount}) {
   if (diceCount == 1) {
-    return `결과는 ${sum}입니다.`
+    return `결과는 ${sum}이야.`
   } else if (diceCount < 4) {
     return `결과는 ${midText} 이며 합은 ${sum} 입니다.`
   } else {
@@ -62,7 +62,7 @@ class CEKRequest {
 
   launchRequest(cekResponse) {
     console.log('launchRequest')
-    cekResponse.setSimpleSpeechText('몇개의 주사위를 던질까요?')
+    cekResponse.setSimpleSpeechText('주사위 던질까?')
     cekResponse.setMultiturn({
       intent: 'ThrowDiceIntent',
     })
@@ -87,7 +87,7 @@ class CEKRequest {
           diceCount = 1
         }
       }
-      cekResponse.appendSpeechText(`주사위를 ${diceCount}개 던집니다.`)
+      cekResponse.appendSpeechText(`주사위를 ${diceCount}개 던졌어.`)
       cekResponse.appendSpeechText({
         lang: 'ko',
         type: 'URL',
