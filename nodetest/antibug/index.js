@@ -53,9 +53,7 @@ class CEKRequest {
       if (!!slots) {
         const bugSlot = slots.bug;
         console.log('BugSlot:' + bugSlot);
-        if (slots.length > 0 && bugSlot) {
-          bugName = bugSlot.value;
-        }
+        bugName = bugSlot.value;
       }
       
       if (bugName === null) {
