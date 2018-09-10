@@ -48,10 +48,11 @@ class CEKRequest {
 
     switch (intent) {
     case 'BugInfoIntent':
-      var bugName = null
+      var bugName = null;
       if (slots !== null) {
         const bugSlot = slots.bug;
-        bugName = bugSlot.value  
+        if (bugSlot !== null)
+          bugName = bugSlot.value;
       }
       
       if (bugName === null) {
@@ -74,10 +75,6 @@ class CEKRequest {
     default:
       cekResponse.setSimpleSpeechText("죄송해요. 해충의 이름을 말씀해주세요.")
     }
-
-    cekResponse.setMultiturn({
-      intent: 'BugInfoIntent',
-    })
 
     if (this.session.new == false) {
       cekResponse.setMultiturn()
