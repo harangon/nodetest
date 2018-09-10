@@ -76,7 +76,7 @@ class CEKRequest {
         else if (bugName === '개미')
           cekResponse.setSimpleSpeechText(`물린 부위에 우유를 살짝 발라주면 가려움을 줄여줘요.`);
         else
-          cekResponse.setSimpleSpeechText("죄송해요.", bugName, "에 대해서는 알지 못합니다.");
+          cekResponse.setSimpleSpeechText("죄송해요." + bugName + "에 대해서는 알지 못합니다.");
       }
     }
     else
