@@ -49,10 +49,8 @@ class CEKRequest {
     if (intent === 'BugInfoIntent') {
       console.log('BugInfoIntent');
       
-      console.log('Slot Length: ' + slots.length);
-
       let bugName = null;
-      if (slots.length > 0) {
+      if (slots.bug != undefined) {
         const bugSlot = slots.bug;
         console.log('BugSlot:' + bugSlot);
         bugName = bugSlot.value;
