@@ -48,7 +48,9 @@ class CEKRequest {
 
     switch (intent) {
     case 'BugInfoIntent':
-      const bugName = slots.bug;
+      const bugSlot = slots.bug;
+      const bugName = bugSlot.value
+      
       if (bugName === null) {
         cekResponse.setSimpleSpeechText("죄송해요. 해충의 이름을 말씀해주세요.")
       }
