@@ -48,7 +48,7 @@ class CEKRequest {
 
     switch (intent) {
     case 'BugInfoIntent':
-      const bugName = null
+      var bugName = null
       if (slots !== null) {
         const bugSlot = slots.bug;
         bugName = bugSlot.value  
