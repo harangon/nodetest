@@ -25,7 +25,7 @@ function audioDirective() {
           beginAtInMilliseconds: 0,
           playType: "NONE",
           token: uuid(),
-          url: `https://files.cloud.naver.com/.fileLink/Zmw%2FBSfaygy%2FspUzJq9eyXGyJ3CwcyLJomejGpcWjnLrsIy3Q9QM9aMlOa0Aw4hDlIW1YEYRgI3EBmGE44U75QI%3D/BGM.mp3?authtoken=IP8rQlvaDuY1J7ARb4nCBwI%3D`,
+          url: `http://blogattach.naver.net/d643ca716c5d5ceac7224d7648aadca5045da88b/20180913_267_blogfile/drforgod_1536819724309_l5vElk_mp3/1+This+Joyful.mp3`,
           urlPlayable: true
         },
         type: "custom",
