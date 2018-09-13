@@ -103,20 +103,24 @@ class CEKRequest {
         else
           cekResponse.setSimpleSpeechText("죄송해요." + bugName + "에 대해서는 알지 못합니다.");
       }
+
+      if (this.session.new == false) {
+        cekResponse.setMultiturn()
+      }
     }
     // play sound intent
     else if (intent == 'PlaySoundIntent') {
-      cekResponse.setSimpleSpeechText("모기 퇴치 초음파를 재생합니다.");
+      cekResponse.appendSpeechText("모기 퇴치 초음파를 재생합니다.");
       cekResponse.addDirective(audioDirective());
     }
     // error
     else
     {
       cekResponse.setSimpleSpeechText("죄송해요. 해충의 이름을 말씀해주세요.");
-    }
 
-    if (this.session.new == false) {
-      cekResponse.setMultiturn()
+      if (this.session.new == false) {
+        cekResponse.setMultiturn()
+      }
     }
   }
 
