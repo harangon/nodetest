@@ -13,6 +13,29 @@ class Directive {
   }
 }
 
+
+function audioDirective() {
+  return new Directive({
+    namespace: 'AudioPlayer',
+    name: 'Play',
+    payload: {
+      audioItem: {
+        audioItemId: uuid(),
+        stream: {
+          beginAtInMilliseconds: 0,
+          playType: "NONE",
+          token: uuid(),
+          url: `https://files.cloud.naver.com/.fileLink/Zmw%2FBSfaygy%2FspUzJq9eyXGyJ3CwcyLJomejGpcWjnLrsIy3Q9QM9aMlOa0Aw4hDlIW1YEYRgI3EBmGE44U75QI%3D/BGM.mp3?authtoken=IP8rQlvaDuY1J7ARb4nCBwI%3D`,
+          urlPlayable: true
+        },
+        type: "custom",
+      },
+      playBehavior: "REPLACE_ALL"
+    }
+  })
+}
+
+
 class CEKRequest {
   constructor (httpReq) {
     this.request = httpReq.body.request
@@ -35,20 +58,20 @@ class CEKRequest {
   launchRequest(cekResponse) {
     console.log('launchRequest')
     cekResponse.setSimpleSpeechText('안녕하세요. 벌레헐떡 입니다. 해충의 이름을 말씀해주세요.')
-    cekResponse.setMultiturn({
-      intent: 'BugInfoIntent',
-    })
+    // cekResponse.setMultiturn({
+    //   intent: 'BugInfoIntent',
+    // })
   }
 
   intentRequest(cekResponse) {
-    console.log('intentRequest')
-    console.dir(this.request)
-    const intent = this.request.intent.name
-    const slots = this.request.intent.slots
+    const intent = this.request.intent.name;
+    const slots = this.request.intent.slots;
 
+    console.log('intentRequest : ' + intent);
+    console.dir(this.request);
+
+    // bug info intent
     if (intent === 'BugInfoIntent') {
-      console.log('BugInfoIntent');
-      
       let bugName = null;
       if (slots.bug != undefined) {
         const bugSlot = slots.bug;
@@ -79,6 +102,12 @@ class CEKRequest {
           cekResponse.setSimpleSpeechText("죄송해요." + bugName + "에 대해서는 알지 못합니다.");
       }
     }
+    // play sound intent
+    else if (intent == 'PlaySoundIntent') {
+      cekResponse.appendSpeechText("모기 퇴치 초음파를 재생합니다.");
+      cekResponse.addDirective(audioDirective());
+    }
+    // error
     else
     {
       cekResponse.setSimpleSpeechText("죄송해요. 해충의 이름을 말씀해주세요.");
@@ -117,6 +146,10 @@ class CEKResponse {
   clearMultiturn() {
     this.response.shouldEndSession = true
     this.sessionAttributes = {}
+  }
+
+  addDirective(directive) {
+    this.response.directives.push(directive);
   }
 
   setSimpleSpeechText(outputText) {
