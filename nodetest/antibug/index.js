@@ -30,7 +30,11 @@ function audioDirective() {
         },
         type: "custom",
       },
-      playBehavior: "REPLACE_ALL"
+      playBehavior: "REPLACE_ALL",
+      source: {
+        logoUrl: `http://static.naver.net/clova/service/native_extensions/sound_serise/img_sound_rain_108.png`,
+        name: "소리 시리즈"
+      }
     }
   })
 }
@@ -102,7 +106,7 @@ class CEKRequest {
     }
     // play sound intent
     else if (intent == 'PlaySoundIntent') {
-      cekResponse.appendSpeechText("모기 퇴치 초음파를 재생합니다.");
+      cekResponse.setSimpleSpeechText("모기 퇴치 초음파를 재생합니다.");
       cekResponse.addDirective(audioDirective());
     }
     // error
