@@ -112,6 +112,7 @@ class CEKRequest {
     else if (intent == 'PlaySoundIntent') {
       cekResponse.appendSpeechText("모기 퇴치 초음파를 재생합니다.");
       cekResponse.addDirective(audioDirective());
+      cekResponse.setMultiturn();
     }
     // error
     else
