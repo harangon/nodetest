@@ -25,7 +25,7 @@ function audioDirective() {
           beginAtInMilliseconds: 0,
           playType: "NONE",
           token: uuid(),
-          url: `http://blogattach.naver.net/d643ca716c5d5ceac7224d7648aadca5045da88b/20180913_267_blogfile/drforgod_1536819724309_l5vElk_mp3/1+This+Joyful.mp3`,
+          url: `http://static.naver.net/clova/service/native_extensions/sound_serise/rainning_sound.mp3`,
           urlPlayable: true
         },
         type: "custom",
