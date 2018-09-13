@@ -56,11 +56,9 @@ class CEKRequest {
   }
 
   launchRequest(cekResponse) {
-    console.log('launchRequest')
-    cekResponse.setSimpleSpeechText('안녕하세요. 벌레헐떡 입니다. 해충의 이름을 말씀해주세요.')
-    // cekResponse.setMultiturn({
-    //   intent: 'BugInfoIntent',
-    // })
+    console.log('launchRequest');
+    cekResponse.setSimpleSpeechText('안녕하세요. 벌레헐떡 입니다. 해충의 이름을 말씀해주세요.');
+    cekResponse.setMultiturn();
   }
 
   intentRequest(cekResponse) {
