@@ -15,6 +15,7 @@ class Directive {
 
 
 function audioDirective() {
+  episodeId = Math.floor(Math.random() * 1000);
   return new Directive({
     namespace: 'AudioPlayer',
     name: 'Play',
