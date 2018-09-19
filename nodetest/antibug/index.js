@@ -89,14 +89,14 @@ class CEKRequest {
       ],
       // 진드기
       [
-        '계피를 소주와 2:8 비율로 섞어 2주동안 숙성시킨 후 사용해보세요.',
+        '계피를 소주와 2대 8 비율로 섞어 2주동안 숙성시킨 후 사용해보세요.',
         '티트리 오일과 에탄올을 섞어 분무기에 담아 뿌려보세요.',
-        '소독용 에탄올과 구강청정제, 그리고 소금을 7:2:1 비율로 섞어 사용해보세요.'
+        '소독용 에탄올과 구강청정제, 그리고 소금을 7대 2대 1 비율로 섞어 사용해보세요.'
       ],
       // 개미
       [
-        '붕산과 설탕을 1:1로 섞어 호일이나 종이접시 위에 올려 개미가 지나가는 곳에 두어보세요.',
-        '사과 식초와 물을 1:1로 섞어 개미가 모이는 곳에 뿌려보세요.',
+        '붕산과 설탕을 1대 1로 섞어 호일이나 종이접시 위에 올려 개미가 지나가는 곳에 두어보세요.',
+        '사과 식초와 물을 1대 1로 섞어 개미가 모이는 곳에 뿌려보세요.',
         '계피가루를 개미가 들어오는 곳에 뿌려보세요.'
       ],
       // 거미
@@ -119,7 +119,7 @@ class CEKRequest {
       ],
       // 바퀴벌레
       [
-        '붕산과 삶은 계란 노른자, 백설탕을 1:1:1비율로 섞어 호일이나 종이접시에 올려 바퀴벌레가 지나가는 자리에 나둬봐요.',
+        '붕산과 삶은 계란 노른자, 백설탕을 1대 1대 1비율로 섞어 호일이나 종이접시에 올려 바퀴벌레가 지나가는 자리에 나둬봐요.',
         '치약을 바퀴벌레가 지나가는 곳에 짜놓거나 물에 희석해서 뿌려보세요.',
         '은행잎을 말려 망에 넣어 습한 곳에 놔둬보세요.'
       ],
@@ -183,7 +183,8 @@ class CEKRequest {
       [
       ]
     ];
-
+    const MAX_CURE_MESSAGE = 5;
+    
     const intent = this.request.intent.name;
     const slots = this.request.intent.slots;
 
@@ -203,10 +204,13 @@ class CEKRequest {
         if (bugIndex === -1) {
           cekResponse.setSimpleSpeechText("죄송해요." + bugName + "에 대해서는 알지 못합니다.");
         }
-        else {
-          console.log("Msg: " + bugIndex + " : " + messageIndex);
+        else if (bugIndex < MAX_CURE_MESSAGE) {
           cekResponse.appendSpeechText(repelMessages[bugIndex][messageIndex]);
           cekResponse.appendSpeechText(bugName + '에게 입은 피해 관리 방법을 알고 싶다면, 벌레헐떡에게 ' + bugName + '에 물렸을 땐 어떡해? 라고 물어보세요. 다른 해충에 대해 알고 싶으면 해충의 이름을 불러주세요.');
+        }
+        else {
+          cekResponse.appendSpeechText(repelMessages[bugIndex][messageIndex]);
+          cekResponse.appendSpeechText('다른 해충에 대해 알고 싶으면 해충의 이름을 불러주세요.');
         }  
       }
 
@@ -222,7 +226,7 @@ class CEKRequest {
         const bugIndex = bugNameList.indexOf(bugName);
         const messageIndex = Math.floor(Math.random() * 3);
 
-        if (bugIndex < 0 || bugIndex > 5) {
+        if (bugIndex < 0 || bugIndex > MAX_CURE_MESSAGE) {
           cekResponse.setSimpleSpeechText("죄송해요." + bugName + "에 대해서는 알지 못합니다.");
         }
         else {
