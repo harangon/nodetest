@@ -237,7 +237,7 @@ class CEKRequest {
     else if (intent == 'PlaySoundIntent') {
       cekResponse.appendSpeechText("모기 퇴치 초음파를 재생합니다.");
       cekResponse.addDirective(audioDirective());
-      cekResponse.setMultiturn();
+      //cekResponse.setMultiturn();
     }
     // error
     else
@@ -248,9 +248,9 @@ class CEKRequest {
   }
 
   sessionEndedRequest(cekResponse) {
-    console.log('sessionEndedRequest')
-    cekResponse.setSimpleSpeechText('벌레헐떡 익스텐션을 종료합니다.')
-    cekResponse.clearMultiturn()
+    console.log('sessionEndedRequest');
+    cekResponse.setSimpleSpeechText('벌레헐떡 익스텐션을 종료합니다.');
+    cekResponse.clearMultiturn();
   }
 }
 
