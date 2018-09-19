@@ -204,6 +204,7 @@ class CEKRequest {
         }
         else {
           cekResponse.setSimpleSpeechText(repelMessages[bugIndex][messageIndex]);
+          cekResponse.appendSpeechText(bugName + '에게 입은 피해 관리 방법을 알고 싶다면, 벌레헐떡에게 ' + bugName + '에 물렸을 땐 어떡해? 라고 물어보세요. 다른 해충에 대해 알고 싶으면 해충의 이름을 불러주세요.');
         }  
       }
 
@@ -224,6 +225,7 @@ class CEKRequest {
         }
         else {
           cekResponse.setSimpleSpeechText(cureMessages[bugIndex][messageIndex]);
+          cekResponse.appendSpeechText('다른 해충에 대해 알고 싶으면 해충의 이름을 불러주세요.');
         }  
       }
 
